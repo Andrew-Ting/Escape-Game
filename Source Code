@@ -1,0 +1,1132 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/JavaScript">
+var a=0;
+var b=0;
+var c=0;
+var d=0;
+var e=0;
+var thelocation=0;
+var cutscene=0;
+var ach1=0;
+var ach3=0;
+var ach4=0;
+var ach5=0;
+var ach6=0;
+var complete=0;
+var codepast=0;
+var safepast=0;
+var timer;
+
+// Beginning events after load
+$(document).ready(function () {
+$(".sv").fadeOut(4000);
+$("#toilet, #begin, #bed, #optionspage").fadeIn(3000);
+$("#disableback").show();
+$("#weakenbottle").fadeIn(5000);
+});
+
+//Credit page animations
+$(document).ready(function () {
+$(".Credits").click( function () {
+$("#optionspage").fadeOut(600);
+$("#creditpage, #backlogo").fadeIn(300);
+$("#logo").fadeIn(600);
+ach5=1;
+});
+
+//Go back after clicking credits animations
+$(".goback").click( function () {
+$("#optionspage").fadeIn(1000);
+$("#creditpage").fadeOut(1000);
+$("#logo, #backlogo").fadeOut(1000);
+});
+});
+
+//Backstory dialogue after clicking start
+$(document).ready(function () {
+
+$(".Start").click(function () {
+$("#disableback").css("display","none");
+$("#optionspage").fadeOut(1000);
+$("#backstory").slideDown(500);
+$("#sent1").show(400);
+$("#backstory").click(function () {
+$("#sent2").fadeIn(400);
+$("#backstory").click(function () {
+$("#sent3").fadeIn(400);
+$("#backstory").click(function () {
+$("#sent4").fadeIn(400);
+$("#backstory").click(function () {
+$("#sent5").fadeIn(400);
+$("#backstory").click(function () {
+$("#sent6").fadeIn(400);
+$("#backstory").click(function () {
+$("#sent7").fadeIn(400);
+$("#backstory").click(function () {
+$("#allup").hide();
+$("#storage").fadeIn(500);
+}); }); }); }); }); }); });});});
+
+
+//Inventory opening and closing + inventory items appear
+$(document).ready(function () {
+$("#arrowup").click (function () {
+$("#storagearea, #arrowdown").show();
+$("#arrowup").hide();
+if (a==1) {
+$("#bedinventory").show();
+}
+if (a==2) {
+$("#bedinventory").hide();
+}
+
+if (b==1) {
+$(".weakeninvent").show();
+if (c==1) {
+$(".weakeninvent").hide();
+}
+}
+if (d==1) {
+$(".barinvent").show();
+}
+if (e==1) {
+$("#paperinvent").show();
+}
+});
+$("#arrowdown").click( function () {
+$("#storagearea,#arrowdown").hide();
+$("#bedinventory, .weakeninvent, .barinvent, #paperinvent").hide();
+$("#arrowup").show();
+});
+});
+
+
+//Inventory comments
+$(document).ready(function () {
+$("#bedinventory").click(function () {
+$("#barholecom, #barweakcom,  #toiletcom, #pillowmattress, #bedcom, #defaultcom, #barweakcom3, #toiletcom2, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#bedinventcom").show();
+});
+$(".weakeninvent").click(function() {
+$("#barholecom, #barweakcom,  #toiletcom, #pillowmattress, #bedcom, #defaultcom, #barweakcom3, #toiletcom2, #barweakcom2, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#weakeninventcom").show();
+});
+$("#brokebarinvent").click(function() {
+$("#barholecom, #barweakcom,  #toiletcom, #pillowmattress, #bedcom, #defaultcom, #barweakcom3, #toiletcom2, #barweakcom2, #weakenbotcom, #brokenbarcom, #barram, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom, #personcom, #escapecom").hide();
+$("#barinventcom").show();
+});
+});
+
+//Glitch on Bed Fix + comment
+$(document).ready(function () {
+$("#mdisab, #pdisab").click(function () {
+$("#barholecom, #barweakcom,  #toiletcom, #bedinventcom, #bedcom, #defaultcom, #barweakcom3, #toiletcom2, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#pillowmattress").show();
+});
+});
+
+//Using bedframe on things
+$(document).ready (function () {
+$("#bedinventory").on("click", function () {
+$("svg").on("click", "#pdisab, #mdisab, #barhole", defaulted);
+$("svg").on("click","#barweak", barweakcomment);
+$("svg").on("click","#toilet", toiletcomment);
+});
+});
+
+function barweakcomment() {
+$("#barholecom, #barweakcom,  #toiletcom, #bedinventcom, #bedcom, #pillowmattress, #defaultcom, #barweakcom3, #toiletcom2, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+if (c==1) {
+$("#barram").show();
+$("#escaperect, #brokenbar").fadeIn(500);
+$("#bedinventory").fadeOut(500);
+a=2;
+}
+else {
+$("#barweakcom3").show();
+}
+$("svg").off("click", "#pdisab, #mdisab, #barhole", defaulted);
+$("svg").off("click","#barweak", barweakcomment);
+$("svg").off("click","#toilet", toiletcomment);
+}
+
+
+function defaulted () {
+$("#barholecom, #barweakcom,  #toiletcom, #bedinventcom, #bedcom, #pillowmattress, #defaultcom, #barweakcom3, #toiletcom2, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#defaultcom").show();
+$("svg").off("click", "#pdisab, #mdisab, #barhole", defaulted);
+$("svg").off("click","#barweak", barweakcomment);
+$("svg").off("click","#toilet", toiletcomment);
+}
+
+function toiletcomment () {
+$("#barholecom, #barweakcom,  #toiletcom, #bedinventcom, #bedcom, #pillowmattress, #defaultcom, #barweakcom3, #toiletcom2, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#toiletcom2").show();
+$("svg").off("click", "#pdisab, #mdisab, #barhole", defaulted);
+$("svg").off("click","#barweak", barweakcomment);
+$("svg").off("click","#toilet", toiletcomment);
+ach1=1;
+}
+
+// Use weakening bottle on things
+$(document).ready (function () {
+$(".weakeninvent").on("click", function () {
+$("svg").on("click", "#pdisab, #mdisab, #barhole, #toilet", defaulted2);
+$("svg").on("click","#barweak", barweakaction);
+});
+});
+
+function defaulted2 () {
+$("#barweakcom, #barholecom, #toiletcom, #bedcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#defaultcom").show();
+$("svg").off("click", "#pdisab, #mdisab, #barhole, #toilet", defaulted2);
+$("svg").off("click","#barweak", barweakaction);
+}
+
+function barweakaction () {
+$("#barweakcom, #barholecom, #toiletcom, #bedcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#barweakcom2, #strangepaste").show();
+$("svg").off("click", "#pdisab, #mdisab, #barhole, #toilet", defaulted2);
+$("svg").off("click","#barweak", barweakaction);
+$(".weakeninvent").fadeOut(500);
+c=1;
+}
+
+// Use metal bar on things
+$(document).ready (function () {
+$(".barinvent").on("click", function () {
+$("svg").on("click", "#pdisab, #mdisab, #barhole, #toilet, #barweak, #table, #painting", defaulted3);
+$("svg").on("click","#code", codeuse);
+});
+});
+
+function defaulted3 () {
+$("#barweakcom, #barholecom, #toiletcom, #bedcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#defaultcom").show();
+$("svg").off("click", "#pdisab, #mdisab, #barhole, #toilet, #barweak, #table, #painting", defaulted3);
+$("svg").off("click","#code", codeuse);
+}
+
+function codeuse () {
+$("#barweakcom, #barholecom, #toiletcom, #bedcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#hiddencom2, #beneathrect").show();
+$("svg").off("click", "#pdisab, #mdisab, #barhole, #toilet, #barweak, #table, #painting", defaulted3);
+$("svg").off("click","#code", codeuse);
+}
+
+//Generic comments on objects: jail area
+$(document).ready(function () {
+$("#barhole").click(function () {
+$("#barweakcom, #toiletcom, #bedcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#barholecom").show();
+});
+$("#barweak").click(function () {
+$("#barholecom, #toiletcom, #bedcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #smashcom").hide();
+$("#barweakcom").show();
+});
+$("#toilet").click(function () {
+$("#barholecom, #barweakcom,  #bedcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#toiletcom").show();
+});
+$("#bed").click(function () {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#bedcom, #pdisab, #mdisab").show();
+$("#bedframe").fadeOut(500);
+a=1;
+});
+$("#weakenbottle").click(function () {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #brokenbarcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#weakenbotcom").show();
+$("#weakenbottle").fadeOut(500);
+b=1;
+});
+$("#actualbrokenbar").click(function () {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#brokenbar").fadeOut(500);
+$("#brokenbarcom").show();
+d=1;
+});
+});
+
+// Generic comments on objects: Art area with vase and safe area
+$(document).ready(function() {
+$("#table").click(function() {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #wallhitcom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#vasecom").show();
+});
+$("#painting").click(function () {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #wallhitcom, #vasecom, #hiddencom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#paintingcom").show();
+});
+$("#code").click(function() {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom2, #opencom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#hiddencom").show();
+codepast=1;
+});
+$("#paper").click(function() {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom2, #opencom, #hiddencom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#papercom").show();
+$("#paper").hide();
+e=1;
+});
+$("#jailbar").click(function() {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #wallhitcom, #vasecom, #paintingcom, #hiddencom2, #opencom, #hiddencom, #papercom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#jailbarcom").show();
+});
+});
+
+//Movement between areas via hole
+$(document).ready(function () {
+$("#escaperect").click(function() {
+$("#begin, #toilet, #bed, #brokenbar, #escaperect").hide();
+$("#sidearrowkeys, #begin2").show();
+thelocation=1;
+});
+});
+
+//Movement between areas via arrows
+$(document).ready(function () {
+$("#arrowleft").click(function () {
+
+if (thelocation==0) {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #paintingcom, #hiddencom, #hiddencom2, #opencom, #vasecom, #papercom, #jailbarcom, #freedoorcom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#wallhitcom").show();
+}
+
+if (thelocation==1) {
+$("#begin, #toilet, #bed, #escaperect").show();
+$("#begin2").hide();
+if (d!=1) {
+$("#brokenbar").show();
+}
+thelocation=0;
+}
+
+if (thelocation==2) {
+$("#begin2, #arrowright").show();
+$("#begin3").hide();
+thelocation=1;
+}
+
+if (thelocation==3) {
+$("#begin3").show();
+$("#finalarea").hide();
+thelocation=2;
+}
+});
+});
+
+$(document).ready (function () {
+$("#arrowright").click(function () {
+if (thelocation==1) {
+$("#begin2, #arrowright").hide();
+$("#begin3").show();
+thelocation=2;
+}
+
+if (thelocation==0) {
+$("#begin, #toilet, #bed, #brokenbar, #escaperect").hide();
+$("#begin2").show();
+thelocation=1;
+}
+
+});
+});
+
+//Code for pathetic prompts :(
+$(document).ready(function() {
+$("#safe").click(function () {
+var x=prompt("4 numbers went together. \n And like hay hiding feather, \n They're hidden deep from weather. \n The biggest lay very last. \n Smallest lay as seen, steadfast. \n The middles did not choose fast. \n They chose the last two, acast.\n A clue in truth now thou hast.");
+
+if (x=="4156") {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #paintingcom, #hiddencom, #hiddencom2, #wallhitcom, #papercom, #freedoorcom, #jailbarcom, #unpreparedcom, #personcom").hide();
+$("#opencom, #newsafe").show();
+$("#safe").hide();
+safepast=1;
+}
+else{
+alert("That wasn't the right code...");
+}
+});
+$("#door").click(function() {
+var l=prompt("The door demands some sort of passcode. Engraved on it are the words...\"Safe is key\" \n\n User:");
+if(l=="DWI") {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #paintingcom, #hiddencom, #hiddencom2, #wallhitcom, #papercom, #freedoorcom, #jailbarcom, #unpreparedcom, #personcom, #opencom").hide();
+$("#door").hide();
+$("#opendoor, #freedoorcom").show();
+}
+else {
+alert("Entry denied.");
+}
+});
+});
+
+//Paper check
+$(document).ready(function () {
+$("#paperinvent").click(function () {
+$("#paperriddle").show();
+$("#paperriddle").click(function () {
+$("#paperriddle").hide();
+});
+});
+});
+
+//Final Area
+$(document).ready(function() {
+$("#opendoor").click(function () {
+if (cutscene==0) {
+if (d==0) {
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #paintingcom, #hiddencom, #hiddencom2, #wallhitcom, #papercom, #freedoorcom, #jailbarcom, #opencom, #personcom").hide();
+$("#unpreparedcom").show();
+}
+else {
+$("#begin3").hide();
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #paintingcom, #hiddencom, #hiddencom2, #wallhitcom, #papercom, #freedoorcom, #jailbarcom, #opencom, #unpreparedcom, #arrowright").hide();
+$("#personcom").show();
+$("#finalarea").show();
+$("svg").on("click", "#arrowleft, #arrowright, #paperinvent", stuck);
+$("svg").one("click", "#brokebarinvent", usingthebar);
+}
+}
+if (cutscene==1) {
+$("#finalarea").show();
+$("#begin3").hide();
+thelocation=3;
+}
+});
+});
+
+function stuck() {
+$("#personcom, #paperriddle, #wallhitcom, #escapecom, #arrowright, #barinventcom").hide();
+$("#stuck").show();
+}
+
+function usingthebar () {
+$("#personcom, #paperriddle, #wallhitcom, #stuck, #escapecom").hide();
+$("#guy").click(function() {
+$("#guy, #barinventcom, #stuck, #escapecom").hide();
+$("#smashcom").show();
+thelocation=3;
+cutscene=1;
+$("svg").off("click", "#arrowleft, #arrowright, #paperinvent", stuck);
+$("svg").off("click", "#pdisab, #mdisab, #barhole, #toilet, #barweak, #table, #painting", defaulted3);
+$("svg").off("click","#code", codeuse);
+});
+}
+
+
+//Endgame-ish
+$(document).ready(function() {
+$("#escape").click(function() {
+if (cutscene==1) {
+complete=1;
+$("#barholecom, #bedcom, #barweakcom,  #toiletcom, #pillowmattress, #bedinventcom, #defaultcom, #pillowmattress2, #toiletcom2, #barweakcom3, #barweakcom2, #weakeninventcom, #weakenbotcom, #barram, #barinventcom, #brokenbarcom, #paintingcom, #hiddencom, #hiddencom2, #wallhitcom, #papercom, #freedoorcom, #jailbarcom, #opencom, #unpreparedcom, #personcom, #smashcom").hide();
+$("#endcom").show();
+$("#lighten").fadeIn(2000);
+setTimeout(function() {$("#endtitle").fadeIn(2000);}, 2000);
+setTimeout(function() {$("#titletext").show();}, 4500);
+setTimeout(achievements, 5000);
+setTimeout(function() {$("#instruct").show();}, 7000);
+}
+else {
+$("#personcom, #wallhitcom, #stuck, #barinventcom").hide();
+$("#escapecom").show();
+}
+});
+});
+
+//Achievements
+function achievements () {
+$("#btitle4").fadeIn(2000);
+
+if (ach1==0) {
+$("#btitle1").fadeIn(2000);
+}
+else {
+$("#title1").fadeIn(2000);
+}
+if (codepast==0 && safepast==0 && complete==1) {
+$("#title2").fadeIn(2000);
+}
+else {
+$("#btitle2").fadeIn(2000);
+}
+
+if (ach5==0) {
+$("#btitle5").fadeIn(2000);
+}
+else {
+$("#title5").fadeIn(2000);
+}
+if (ach6==0) {
+$("#btitle6").fadeIn(2000);
+}
+else {
+$("#title6").fadeIn(2000);
+}
+}
+
+//Some Achievement Requirements
+$(document).ready(function() {
+$(".start").click(function() {
+var timer=setTimeout(function() {ach3=1;}, 300000);
+$("#escape").click(function() {
+if (complete==1 && ach3==0) {
+setTimeout(function() {$("#title3").fadeIn(2000);}, 5000);
+clearTimeout(timer);
+}
+if (complete==1 && ach3==1) {
+setTimeout(function() {$("#btitle3").fadeIn(2000);}, 5000);
+}
+});
+});
+$("#arrowleft").click(function() {
+if(cutscene==1) {
+ach6=1;
+}
+});
+});
+
+//Click the titles or achievements
+$(document).ready(function() {
+$("#title1").click(function() {
+alert("Obtained by attempting to place the bedframe on the toilet.");
+});
+$("#title2").click(function() {
+alert("Obtained by finishing the game without opening the safe or the hidden compartment.");
+});
+$("#title3").click(function() {
+alert("Obtained by finishing the game in or under 5 minutes.");
+});
+$("#title4").click(function() {
+alert("Obtained by clicking the instruction below.");
+});
+$("#title5").click(function() {
+alert("Obtained by checking the credits page before starting the game.");
+});
+$("#title6").click(function() {
+alert("Obtained by still going back inside the prison campus after defeating the gang member.");
+});
+$("#instruct").click(function() {
+$("#btitle4").fadeOut(500);
+setTimeout(function() {$("#title4").fadeIn(1000);}, 500);
+});
+});
+
+</script>
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<svg height="700" width="900">
+<defs>
+<radialGradient id="loadgrad" cx="50%" cy="50%" r="70%">
+<stop offset="0%" stop-color="grey"/>
+<stop offset="100%" stop-color="black"/>
+</radialGradient>
+
+<linearGradient id="bargrad" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="black"/>
+<stop offset="50%" stop-color="silver"/>
+<stop offset="100%" stop-color="black"/>
+</linearGradient>
+
+<linearGradient id="brokengrad" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" stop-color="black"/>
+<stop offset="50%" stop-color="silver"/>
+<stop offset="100%" stop-color="black"/>
+</linearGradient>
+
+<radialGradient id="art" cx="50%" cy="50%" fx="30%" fy="50%">
+<stop offset="0%" stop-color="red"/>
+<stop offset="50%" stop-color="yellow"/>
+<stop offset="100%" stop-color="blue"/>
+</radialGradient>
+
+<linearGradient id="pillargrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="black"/>
+<stop offset="50%" stop-color="silver"/>
+<stop offset="100%" stop-color="black"/>
+</linearGradient>
+
+<linearGradient id="rainbow" x1="40%" y1="40%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="red"/>
+<stop offset="20%" stop-color="orange"/>
+<stop offset="40%" stop-color="yellow"/>
+<stop offset="60%" stop-color="green"/>
+<stop offset="80%" stop-color="blue"/>
+<stop offset="100%" stop-color="purple"/>
+</linearGradient>
+
+</defs>
+
+<rect class="sv" width="900" height="650" fill="url(#loadgrad)"/>
+<text class="sv" id="loading" fill="white" font-size="55" font-family="Verdana">Loading. Please Wait... 
+<animate id="un"
+
+            attributeName="y"
+            values="500;550;500"
+            begin="0s" dur="2s"
+fill="freeze"
+repeatCount="indefinite"
+           />
+</text>
+
+<g id="begin" style="display: none">
+<rect x="0" y="0" width="900" height="700" fill="slategray"/>
+<rect x="130" y="200" width="640" height="300" fill="bisque" stroke="black" stroke-width="2"/>
+<rect x="195" y="300" width="574" height="100" fill="gray"/>
+<line x1="0" y1="0" x2="195" y2="300" style="stroke-width: 2; stroke:black" />
+<line x1="900" y1="0" x2="770" y2="200" style="stroke-width: 2; stroke:black" />
+<line x1="0" y1="700" x2="195" y2="400" style="stroke-width: 2; stroke:black" />
+<line x1="900" y1="700" x2="770" y2="500" style="stroke-width: 2; stroke:black" />
+
+
+
+<rect x="150" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="200" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="250" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="300" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="350" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="400" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="450" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="500" y="200" width="10" height="300" fill="url(#bargrad)"/>
+
+<rect id="barhole" class="endingy" x="500" y="400" width="11" height="10" fill="bisque" />
+<path id="barweak" class="endingy" d="M 500 250 l 8 -8 l -8 -8" fill="bisque"/>
+<path id="strangepaste" d="M500 250 l 8 -8 l -8 -8 l 10 0 l 0 16 z" fill="yellow" display="none"/>
+
+<rect x="550" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="600" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="650" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="700" y="200" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="750" y="200" width="10" height="300" fill="url(#bargrad)"/>
+</g>
+
+<g id="weakenbottle" display="none" transform="translate(123, -30)">
+<path d="M120,560 c-41,-85 71,-85 29,0 Z" stroke="black" fill="azure"/>
+<rect x="130" y="486" width="8" height="10" fill="yellow" stroke="black"/>
+</g>
+
+<g id="toilet" class="endingy" style="display: none">
+<!--toilet-->
+<rect x="170" y="490" width="100" height="70" rx="20" ry="20" fill="seashell"/>
+<rect x="110" y="430" width="60" height="90" rx="20" ry="20" fill="seashell" />
+<path d="M170,510 c-125,-126 -4,-197 17,-33"  fill="Saddlebrown" stroke-width="5" stroke="black"/>
+<ellipse cx="220" cy="490" rx="60" ry="30" fill="seashell" stroke-width="2" stroke="black"/>
+<ellipse cx="220" cy="490" rx="40" ry="15" fill="lightblue"/>
+</g>
+
+<g id="bed" style="display: none">
+<!--bed frame -->
+<path id="bedframe" d="M500 600 l 0 50 l 15 0 l 0 -40 l 250 0 l 0 40 l 15 0 l 0 -50" fill="sienna" stroke="black" stroke-width="0.5"/>
+<!--mattress and pillow-->
+<rect id="mattress" x="500" y="580" height="20" width="280" rx="5" ry="5" fill="linen"/>
+<path id="pillow" d="M600,580 c-200,34 -28,-101 -1,-1" fill="lightblue" stroke="azure" stroke-width="5"/>
+</g>
+
+<g id="brokenbar" display="none">
+<rect id="actualbrokenbar" x="520" y="610" width="150" height="10" fill="url(#brokengrad)"/>
+<path d="M670 610 l 0 10 l -8 0" fill="slategray"/>
+</g>
+
+<g id="begin2" display="none">
+<g id="vasescene">
+<rect x="0" y="0" height="700" width ="300" fill="bisque"/>
+<rect x="600" y="0" height="700" width ="300" fill="bisque"/>
+<rect x="300" y="0" height="700" width="300" fill="gray"/>
+<path d="M 300 0 l 0 700 M 600 0 l 0 700" stroke="black" stroke-width="1"/>
+<path d="M 200 0 l 100 100 l 300 0 l 100 -100 z M 200 700 l 100 -100 l 0 -100 l 300 0 l 0 100 l 100 100 z" fill="slategray"/>
+<path d="M 300 500 l 300 0 M 300 100 l 300 0" stroke="black"/>
+</g>
+<g id="table">
+<path d="M 400 550 l 10 0 l 0 -60 l 80 0 l 0 60 l 10 0 l 0 -80 l -100 0 z" fill="brown"/>
+<path id="vase" d="M 433,383 c44,39 -42,41 3,88 L 466 471 c 44, -48 -42, -50 5 -88 Z" fill="ivory" stroke="lightblue"/>
+</g>
+<g id="painting">
+<rect x="400" y="200" width="100" height="80" stroke="silver" stroke-width="4" fill="url(#art)"/>
+<rect x="450" y="260" width="30" height="18" fill="red" />
+</g>
+</g>
+
+<g id="begin3" display="none">
+<rect x="0" y="0" width="900" height="700" fill="slategray"/>
+<rect x="140" y="230" width="280" height="300" fill="ivory"/>
+<rect x="450" y="230" width="309" height="300" fill="ivory"/>
+<rect x="140" y="230" width="10" height="300" fill="white"/>
+<path d="M 0 0 l 140 230 M 900 0 l -140 230 l 0 300 M 900 700 l -140 -170 M 0 700 l 140 -170 M 410 230 l -80 100 l -180 0 M 410 530 l -80 -100 l -180 0 M 330 430 l 0 -100" stroke="black" fill="none"/>
+<path d="M 450 230 l 80 100 l 229 0 M 450 530 l 80 -100 l 229 0 M 530 430 l 0 -100" stroke="black" fill="none"/>
+<rect x="410" y="0" width="40" height="530" fill="url(#pillargrad)"/>
+<g id="jailbars">
+<rect x="150" y="230" width="10" height="100" fill="url(#bargrad)"/>
+<rect x="200" y="230" width="10" height="100" fill="url(#bargrad)"/>
+<rect x="250" y="230" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="300" y="230" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="350" y="230" width="10" height="300" fill="url(#bargrad)"/>
+<rect x="400" y="230" width="10" height="300" fill="url(#bargrad)"/>
+</g>
+<g id="door">
+<rect x="150" y="330" height="200" width="100" fill="silver"/>
+<rect x="205" y="340" width="30" height="10"/>
+</g>
+<rect x="140" y="330" width="10" height="30" fill="yellow"/>
+<rect x="140" y="415" width="10" height="30" fill="yellow"/>
+<rect x="140" y="500" width="10" height="30" fill="yellow"/>
+<rect id="opendoor" x="150" y="330" height="200" width="100" opacity="0" display="none"/>
+
+<path id="code" d="M 800 375 l 0 15 l 10 4 l 0 -23 z" stroke="black" stroke-width="0.5" fill="slategray"/>
+<g id="beneathrect" display="none">
+<path d="M 800 375 l 0 15 l 10 4 l 0 -23 z" stroke="black" stroke-width="0.5" fill="black"/>
+<path d="M 803 377 l 5 -2" stroke="red" />
+<path d="M 806 380 l 5 2" stroke="green" />
+</g>
+<g id="safe">
+<rect x="600" y="340" width="80" height="100" fill="black"/>
+<circle cx="630" cy="410" r="5" fill="gray"/>
+<circle cx="650" cy="410" r="5" fill="gray"/>
+<line x1="640" y1="340" x2="640" y2="440" fill="brown"/>
+<rect x="610" y="345" width="15" height="5" fill="green"/>
+</g>
+<g id="newsafe" display="none">
+<rect x="560" y="340" width="40" height="100" fill="black"/>
+<rect x="680" y="340" width="40" height="100" fill="black"/>
+<rect x="600" y="340" width="80" height="100" fill="gray"/>
+<rect x="620" y="380" width="40" height="5" fill="orange" stroke="black" stroke-width="2"/>
+<rect x="620" y="420" width="40" height="5" fill="orange" stroke="black" stroke-width="2"/>
+<rect id="paper" x="630" y="410" height="10" width="7" fill="#ffe6e6"/>
+</g>
+</g>
+
+<g id="bugfix">
+<rect id="disableback" display="none" x="0" y="0" width="900" height="700" opacity="0"/>
+<path id="pdisab" class="endingy" d="M400,640 c-200,34 -28,-101 -1,-1" stroke="white" stroke-width="5" display="none" opacity="0"/>
+<rect id="mdisab" class="endingy" x="200" y="640" height="20" width="280" rx="5" ry="5" display="none" opacity="0"/>
+<g id="escaperect" display="none">
+<path d="M 498 234 l 14 8 l 0 169 l -12 0 Z" fill="bisque"/>
+<rect x="498" y="300" width="20" height="100" fill="gray"/>
+</g>
+</g>
+
+<g id="finalarea" display="none">
+<rect x="0" y="0" width="900" height="700" fill="gray"/>
+<path d="M 0 0 l 900 0 l -300 200 l -300 0 l-300 -200 M 0 700 l 900 0 l -300 -200 l -300 0 l -300 200" stroke-width="4" stroke="black" fill="silver"/>
+<g id="escape">
+<rect x="405" y="350" width="90" height="152" fill="lightblue"/>
+<rect x="405" y="480" width="90" height="22" fill="green"/>
+<rect x="485" y="473" width="10" height="25" fill="brown"/>
+<path d="M 495 473 l -30 0 l 20 -40 l -20 0 l 20 -40 l -20 0 l 30 -60" fill="green"/>
+</g>
+<g id="guy">
+<ellipse cx="400" cy="420" rx="40" ry="22" transform="rotate(315 430 420)" fill="black"/>
+<circle cx="430" cy="420" r="17" fill="bisque"/>
+<circle cx="438" cy="423" r="2" fill="black"/>
+<circle cx="430" cy="416" r="2" fill="black"/>
+<path d="M 430 427 l 5 2 M 425 405 l 5 2 l -3 -2 l 10 5 l -5 -2 l 10 4 l -3 -2 l 10 6 l -3 -4 l 5 -2 Q 425 390 425 405" stroke="black" fill="black"/>
+<line x1="420" y1="435" x2="400" y2="450" stroke="#6666ff" stroke-width="0.5"/>
+<circle cx="412" cy="441" r="1.5" fill="white"/>
+</g>
+<path d="M 300 200 l 300 0 l 0 300 l -105 0 l 0 -152 l -90 0 l 0 152 l -105 0z" fill="ivory" stroke-width="4" stroke="black"/>
+</g>
+
+<g id="sidearrowkeys" display="none">
+<path d="M 10 350 l 20 -20 l 0 40" id="arrowleft" fill="blue"/>
+<path d="M 890 350 l -20 -20 l 0 40" id="arrowright" fill="blue"/>
+</g>
+
+
+<g id="optionspage" style="display: none">
+<text x="315" y="50" fill="red" font-size="30" font-family="Arial" stroke="white">Escape: Conspiracy</text>
+<rect class="Start" x="350" y="325" width="200" height="50" stroke-width="2" stroke="black" fill="slategray" />
+<text class="Start" x="370" y="359" font-size="30" font-family="Arial">Start Game</text>
+<g id="crediting">
+<rect class="Credits" x="350" y="487" width="200" height="50" stroke-width="2" stroke="black" fill="SlateGray"/>
+<text class="Credits" x="400" y="522" font-size="30" font-family="Arial">Credits</text>
+</g>
+</g>
+
+<g id="creditpage" fill="black" font-family="Arial" font-size="25" display="none">
+<text x="250" y="50"> Developer: Andrew Ting.</text>
+<text x="250" y="100" >Designer: Andrew Ting.</text>
+<text x="250" y="150" >Criticisms are welcome. </text>
+<text x="250" y="200" >This game uses CSS, Javascript, jQuery, SVG, and SMIL.</text>
+<g id="gobacking">
+<rect class="goback" x="250" y="210" width="100" height="40" stroke="white"/>
+<text class="goback" x="250" y="240" fill="white">Go Back</text>
+</g>
+</g>
+
+<rect id="backlogo" width="390" height="150" fill="lightblue" x="260" y="400" stroke="black" stroke-width="3" display="none"/>
+
+<g id="logo" transform="translate(0 400)" display="none">
+<path d="M 107 10 l -10 30 l 5 0 l 5 -5 l 10 0 l 5 5 l 5 0 l -10 -30 z M 111 25 l 2 0 l 1 3 l -4 0 z" stroke="black" fill="none" stroke-width="1" stroke-dasharray="0 110 110 0" transform="scale (3, 3)" stroke-linecap="round">
+
+<animate id="first"
+attributeName="stroke-dashoffset"
+begin="crediting.click"
+from="0%"
+to="13%"
+dur="8s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate id="one"
+attributeName="fill"
+begin="crediting.click+8s"
+from="lightblue"
+to="red"
+dur="4s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate
+attributeName="fill"
+begin="crediting.click"
+from="lightblue"
+to="lightblue"
+dur="0s"
+repeatCount="1"
+fill="freeze"
+/>
+</path>
+
+<path d="M 128 29 l 0 11 l 2 0 l 0 -8 l 6 0 l 0 8 l 2 0 l 0 -10 l -8 0 l 0 -1 z" stroke="black" fill="none" stroke-width="1" stroke-dasharray="0 100 100 0" transform="scale (3, 3)" stroke-linecap="round">
+
+<animate id="second"
+attributeName="stroke-dashoffset"
+begin="crediting.click"
+from="0%"
+to="12.5%"
+dur="8s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate id="two"
+attributeName="fill"
+begin="crediting.click+8s"
+from="lightblue"
+to="ivory"
+dur="4s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate
+attributeName="fill"
+begin="crediting.click"
+from="lightblue"
+to="lightblue"
+dur="0s"
+repeatCount="1"
+fill="freeze"
+/>
+
+</path>
+
+<path d="M 148 30 l 0 10 l 2 0 l 0 -8 l 7 0 l 0 -2 z" stroke="black" fill="none" stroke-width="1" stroke-dasharray="0 100 100 0" transform="scale (3, 3)" stroke-linecap="round">
+
+<animate id="fourth"
+attributeName="stroke-dashoffset"
+begin="crediting.click"
+from="0%"
+to="12.5%"
+dur="8s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate id="four"
+attributeName="fill"
+begin="crediting.click+8s"
+from="lightblue"
+to="red"
+dur="4s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate
+attributeName="fill"
+begin="crediting.click"
+from="lightblue"
+to="lightblue"
+dur="0s"
+repeatCount="1"
+fill="freeze"
+/>
+
+</path>
+
+<path d="M 138 30 l 8 0 l 0 -8 l 2 0 l 0 18 l -10 0 z M 140 32 l 6 0 l 0 6 l -6 0 z" stroke="black" fill="none" stroke-width="1" stroke-dasharray="0 80 80" transform="scale (3, 3)" stroke-linecap="round">
+
+<animate id="third"
+attributeName="stroke-dashoffset"
+begin="crediting.click"
+from="0%"
+to="12.5%"
+dur="8s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate id="three"
+attributeName="fill"
+begin="crediting.click+8s"
+from="lightblue"
+to="ivory"
+dur="4s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate
+attributeName="fill"
+begin="crediting.click"
+from="lightblue"
+to="lightblue"
+dur="0s"
+repeatCount="1"
+fill="freeze"
+/>
+
+</path>
+
+<path d="M 158 30 l 10 0 l 0 6 l -8 0 l 0 2 l 8 0 l 0 2 l -10 0 z M 160 32 l 6 0 l 0 2 l -6 0 z" stroke="black" fill="none" stroke-width="1" stroke-dasharray="0 100 100 0" transform="scale (3, 3)" stroke-linecap="round">
+
+<animate id="fifth"
+attributeName="stroke-dashoffset"
+begin="crediting.click"
+from="0%"
+to="12.5%"
+dur="8s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate id="five"
+attributeName="fill"
+begin="crediting.click+8s"
+from="lightblue"
+to="ivory"
+dur="4s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate
+attributeName="fill"
+begin="crediting.click"
+from="lightblue"
+to="lightblue"
+dur="0s"
+repeatCount="1"
+fill="freeze"
+/>
+
+</path>
+
+<path d="M 168 30 l 0 10 l 10 0 l 0 -10 l -10 0 M 171.3 30 l 0 5 M 174.6 30 l 0 5" stroke="black" fill="none" stroke-width="1" stroke-dasharray="0 100 100 0" transform="scale (3, 3)" stroke-linecap="round">
+
+<animate id="sixth"
+attributeName="stroke-dashoffset"
+begin="crediting.click"
+from="0%"
+to="12.5%"
+dur="8s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate id="six"
+attributeName="fill"
+begin="crediting.click+8s"
+from="lightblue"
+to="ivory"
+dur="4s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate
+attributeName="fill"
+begin="crediting.click"
+from="lightblue"
+to="lightblue"
+dur="0s"
+repeatCount="1"
+fill="freeze"
+/>
+
+</path>
+
+<path d="M 185 10 l 20 0 l 0 5 l -7.5 0 l 0 25 l -5 0 l 0 -25 l -7.5 0 z M 200 38 l 2 0 l 0 2 l -2 0 z" stroke="black" fill="none" stroke-width="1" stroke-dasharray="0 100 100 0" transform="scale (3, 3)" stroke-linecap="round">
+
+<animate id="seventh"
+attributeName="stroke-dashoffset"
+begin="crediting.click"
+from="0%"
+to="12.5%"
+dur="8s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate id="seven"
+attributeName="fill"
+begin="crediting.click+8s"
+from="lightblue"
+to="red"
+dur="4s"
+repeatCount="1"
+fill="freeze"
+/>
+
+<animate
+attributeName="fill"
+begin="crediting.click"
+from="lightblue"
+to="lightblue"
+dur="0s"
+repeatCount="1"
+fill="freeze"
+/>
+</path>
+</g>
+<g id="allup">
+<!--backstory of guy-->
+<rect id="backstory" x="0" y="0" opacity="0.4" height="700" width="900" display="none"/>
+<text id="sent1" x="30" y="50" fill="white" display="none"> It all happened too fast. </text>
+<text id="sent2" x="30" y="100" fill="white" display="none"> Someone told me of a top-secret plan by a gangster group to eliminate everyone in my bloodline... except me.</text>
+<text id="sent3" x="30" y="150" fill="white" display="none"> I ran to my house to save them. But someone drugged me. The next thing I knew it, I'm here.</text>
+<text id="sent4" x="30" y="200" fill="white" display="none"> I don't know what their motives are, but I need to get out of here as soon as I can.</text>
+<text id="sent5" x="30" y="250" fill="white" display="none"> It seems they don't have security cameras, so I guess that's a plus...</text>
+<text id="sent6" x="30" y="300" fill="white" display="none"> How to play: Click around the area to find objects you can use. You can open your inventory by clicking the blue arrow below. </text>
+<text id="sent7" x="30" y="350" fill="white" display="none">To interact with an area, simply click it. To use an object somewhere, click the object then the place you intend to put it in.</text>
+</g>
+
+
+<g id="storage" display="none">
+<rect id="commentarea" x="0" y="0" height="50" width="1000" fill="brown"/>
+<rect id="storagearea" x="50" y="600" height="100" width="800" fill="lightblue" display="none" stroke="black" stroke-width="2"/>
+<path id="arrowdown" d="M 450 590 l -20 -20 l 40 0" fill="blue" display="none"/>
+<path id="arrowup" d="M 450 670 l 20 20 l -40 0" fill="blue"/>
+</g>
+
+<g id="inventoryitems">
+<path id="bedinventory" d="M 60 650 l 0 10 l 3 0 l 0 -8 l 50 0 l 0 8 l 3 0 l 0 -10" fill="sienna" stroke="black" stroke-width="0.5" display="none"/>
+<path class="weakeninvent" d="M220,690 c-41,-85 71,-85 29,0 Z" stroke="black" fill="azure" display="none"/>
+<rect class="weakeninvent" x="231" y="616" width="8" height="10" fill="yellow" stroke="black" display="none"/>
+<rect class="barinvent" id="brokebarinvent" x="60" y="645" height="5" width="75" display="none" fill="url(#brokengrad)"/>
+<path class="barinvent" d="M 135 645 l 0 5 l -5 0 Z" fill="lightblue" display="none" stroke="lightblue" stroke-width="2"/>
+<rect id="paperinvent" x="150" y="640" width="14" height="20" display="none" fill="#ffe6e6" />
+</g>
+
+<g class="commentary">
+<!-- Comments above-->
+<text id="barholecom" display="none" fill="white" x="5" y="30">This hole in the bar seems promising.</text>
+<text id="barweakcom" display="none" fill="white" x="5" y="30">This area of the bar seems weak. I think I can break this part out somehow.</text>
+<text id="toiletcom" display="none" fill="white" x="5" y="30">An average toilet. I doubt I can say more.</text>
+<text id="bedcom" display="none" fill="white" x="5" y="30">Perhaps my bed will be more useful if I remove the mattress and pillow. The bed frame could come in handy.</text>
+<text id="bedinventcom" display="none" fill="white" x="5" y="30">A possibly handy bedframe. Who knows?</text>
+<text id="pillowmattress" display="none" fill="white" x="5" y="30">I doubt the pillow and mattress will be of any use.</text>
+<text id="defaultcom" display="none" fill="white" x="5" y="30">I don't think I can use that there.</text>
+<text id="barweakcom3" display="none" fill="white" x="5" y="30">The bedframe is too weak to ram the bar out...</text>
+<text id="toiletcom2" display="none" fill="white" x="5" y="30">I ask you. CAN you put a bedframe on a toilet? WILL it ultimately do anything? NO!!!</text>
+<text id="weakeninventcom" display="none" fill="white" x="5" y="30">The bottle reads: Special Metal Weakener Paste. Makes metals a tad bit softer to pry out more easily.</text>
+<text id="barweakcom2" display="none" fill="white" x="5" y="30">I added the strange paste on the bar. The bottle is now empty and useless.</text>
+<text id="weakenbotcom" display="none" fill="white" x="5" y="30">A bottle behind a toilet? Weird!</text>
+<text id="barram" display="none" fill="white" x="5" y="30">With quite some ramming, the bar came off (though the bedframe is now in pieces). FREEDOM!</text>
+<text id="brokenbarcom" display="none" fill="white" x="5" y="30">This metal bar can come in handy.</text>
+<text id="barinventcom" display="none" fill="white" x="5" y="30">Well, I have this bar. What to use it for though?</text>
+<text id="wallhitcom" display="none" fill="white" x="5" y="30">Nothing's on that side but a wall :P </text>
+<text id="vasecom" display="none" fill="white" x="5" y="30">I will never understand vase art "at its finest..." It's just a normal vase!</text>
+<text id="paintingcom" display="none" fill="white" x="5" y="30">The painting is entitled: "Dreams Within Imaginations."</text>
+<text id="hiddencom" display="none" fill="white" x="5" y="30">A secret compartment! Unfortunately, it's jammed. I need to ram it out...</text>
+<text id="hiddencom2" display="none" fill="white" x="5" y="30">Wow! That worked! Yet nothing's inside but numbers engraved inside- 6, 1, 4 and 5...</text>
+<text id="opencom" display="none" fill="white" x="5" y="30">I opened the safe!</text>
+<text id="papercom" display="none" fill="white" x="5" y="30">Nothing's inside but this paper with writings...</text>
+<text id="jailbarcom" display="none" fill="white" x="5" y="30">I'm blocked out... again...</text>
+<text id="freedoorcom" display="none" fill="white" x="5" y="30">The door opened! Freedom! But I hear something in the other room...</text>
+<text id="unpreparedcom" display="none" fill="white" x="5" y="30">I don't know... I feel I haven't quite fully prepared...</text>
+<text id="personcom" display="none" fill="white" x="5" y="30">Oh no! A gang member spotted me! What do I do?</text>
+<text id="stuck" display="none" fill="white" x="5" y="30">I don't have time to do that! I need to eliminate this guy somehow! And quick!</text>
+<text id="smashcom" display="none" fill="white" x="5" y="30">In a swift and fluid movement, I slammed the bar on his head. He's now unconscious.</text>
+<text id="escapecom" display="none" fill="white" x="5" y="30">I can't escape! The guy is in the way...</text>
+<text id="endcom" display="none" fill="white" x="5" y="30">I really hope my family's okay...</text>
+</g>
+
+<g id="paperriddle" display="none">
+<rect x="200" y="50" width="500" height="500" fill="#ffe6e6" />
+<text x="250" y="100">
+<tspan stroke="blue" stroke-width="4" font-size="30px" dy="0, -5, 5, 5, -5">Dreams</tspan>
+<tspan stroke="url(#rainbow)" stroke-width="4" font-size="40px" dx="20">paint</tspan>
+</text>
+<text x="450" y="80">
+<tspan stroke="pink" stroke-width="4" font-size="40" dx="20, 20, -50, 50, -50, 50, -50, 50" dy="15 15 15 15 15 15 15 15">pictures</tspan>
+</text>
+<text x="210" y="200">
+<tspan stroke-width="4" font-size="50">Their</tspan>
+<tspan stroke-width="4" font-size="30" dx="20" dy="0 10 10 10 10 10 1010">INITIALS</tspan>
+<tspan x="210" y="450" font-size="45" fill="red">dictate the User in CAPS</tspan>
+<tspan x="210" y="510">Click paper to close</tspan>
+</text>
+</g>
+
+<g id="textandtitles">
+<rect id="lighten" display="none" fill="white" x="0" y="0" width="900" height="700"/>
+<text id="endtitle" x="315" y="50" fill="red" font-size="30" font-family="Arial" stroke="silver" stroke-width="1" display="none">Escape: Conspiracy</text>
+<text id="titletext" font-size="25" x="20" y="190" display="none">Titles/Achievements:</text>
+<text id="title1" font-size="20" x="20" y="230" fill="blue" stroke="grey" display="none">Randomly Curious... or an Idiot</text>
+<text id="title2" font-size="20" x="20" y="260" fill="blue" stroke="grey" display="none">Time Traveller</text>
+<text id="title3" font-size="20" x="20" y="290" fill="blue" stroke="grey" display="none">I Need SPEED</text>
+<text id="title4" font-size="20" x="20" y="320" fill="blue" stroke="grey" display="none">Are You a Title?</text>
+<text id="title5" font-size="20" x="20" y="350" fill="blue" stroke="grey" display="none">Paying Respects</text>
+<text id="title6" font-size="20" x="20" y="380" fill="blue" stroke="grey" display="none">Wait, I might have forgotten something...</text>
+<text id="btitle1" font-size="20" x="20" y="230" display="none">???</text>
+<text id="btitle2" font-size="20" x="20" y="260" display="none">???</text>
+<text id="btitle3" font-size="20" x="20" y="290" display="none">???</text>
+<text id="btitle4" font-size="20" x="20" y="320" display="none">???</text>
+<text id="btitle5" font-size="20" x="20" y="350" display="none">???</text>
+<text id="btitle6" font-size="20" x="20" y="380" display="none">???</text>
+<text id="instruct" font-size="20" x="20" y="410" display="none">Click known titles to know how you got them!</text>
+</g>
+
+<!--them animation doohickeys-->
+<animate xlink:href="#mattress"
+attributeName="x"
+attributeType="XML"
+to="200"
+begin="bed.click" dur="2s"
+repeatCount="1"
+fill="freeze"
+restart="never"
+/>
+<animate xlink:href="#mattress"
+attributeName="y"
+attributeType="XML"
+to="640"
+begin="bed.click" dur="2s"
+fill="freeze"
+repeatCount="1"
+restart="never"
+/>
+
+<animate xlink:href="#pillow"
+attributeName="d"
+attributeType="XML"
+to="M400,640 c-200,34 -28,-101 -1,-1"
+begin="bed.click" dur="2s"
+repeatCount="1"
+fill="freeze"
+restart="never"
+/>
+
+</svg>
+</body>
+</html>
